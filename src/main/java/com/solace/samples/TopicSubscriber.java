@@ -110,7 +110,10 @@ public class TopicSubscriber {
 
                     System.out.println("");
                     System.out.println(" Received a message with content: " + new String(content));
-                    System.out.println("");
+                    System.out.println(" Complete message dump: ");
+
+                    // Display the contents of a message in human-readable form
+                    System.out.println(rxMessage.dump(SolEnum.MessageDumpMode.FULL));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -125,7 +128,7 @@ public class TopicSubscriber {
 
             @Override
             public void onEvent(SessionHandle sessionHandle) {
-                System.out.println("Received SessionEvent:" + sessionHandle.getSessionEvent());
+                System.out.println(" Received SessionEvent:" + sessionHandle.getSessionEvent());
             }
         };
 
@@ -146,7 +149,7 @@ public class TopicSubscriber {
         rc = sessionHandle.subscribe(topic, SolEnum.SubscribeFlags.WAIT_FOR_CONFIRM, 0);
         assertReturnCode("sessionHandle.subscribe()", rc, SolEnum.ReturnCode.OK);
 
-        System.out.println("Subscribed. Awaiting message...");
+        System.out.println(" Subscribed. Awaiting message...");
         try {
             latch.await(); // block here until message received, and latch will
                            // flip

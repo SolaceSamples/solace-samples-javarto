@@ -87,8 +87,7 @@ public class TopicPublisher {
 
             @Override
             public void onEvent(SessionHandle sessionHandle) {
-                // System.out.println("Received SessionEvent:" +
-                // sessionHandle.getSessionEvent());
+                System.out.println(" Received SessionEvent:" + sessionHandle.getSessionEvent());
             }
         };
 
@@ -114,7 +113,7 @@ public class TopicPublisher {
         messageHandle.setDestination(topic);
 
         // Create the content to publish and attach to message
-        String contentStr = "Hello from Java RTO TopicPublisher!";
+        String contentStr = "Hello world!";
         ByteBuffer content = ByteBuffer.allocateDirect(contentStr.length());
         content.put(contentStr.getBytes());
         content.flip();
