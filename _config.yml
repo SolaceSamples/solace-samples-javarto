@@ -7,8 +7,8 @@ repository: https://github.com/SolaceSamples/solace-samples-javarto
 # Also see _includes/intro.html to customize the description which gets included in index.html.
 
 # Links
-links-downloads: //dev.solace.com/downloads/
-links-community: //dev.solace.com/community/
+links-downloads: //solace.com/downloads/
+links-community: //solace.com/support/
 links-get-started: //dev.solace.com/get-started/dotnet-tutorials/
-links-solaceCloud-setup: //cloud.solace.com/create-messaging-service/
+links-solaceCloud-setup: //solace.com/cloud/
 docs-javarto-api: //docs.solace.com/API-Developer-Online-Ref-Documentation/jrto/index.html
