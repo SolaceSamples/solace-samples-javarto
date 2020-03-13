@@ -8,7 +8,7 @@ repository: https://github.com/SolaceSamples/solace-samples-javarto
 
 # Links
 links-downloads: //solace.com/downloads/
-links-community: //solace.com/support/
+links-community: //solace.community
 links-get-started: //dev.solace.com/get-started/dotnet-tutorials/
 links-solaceCloud-setup: //solace.com/cloud/
 docs-javarto-api: //docs.solace.com/API-Developer-Online-Ref-Documentation/jrto/index.html
