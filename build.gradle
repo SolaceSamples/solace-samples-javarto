@@ -51,7 +51,7 @@ sourceSets {
 def scripts = [ 'TopicPublisher':'com.solace.samples.javarto.patterns.TopicPublisher',
                 'TopicSubscriber':'com.solace.samples.javarto.patterns.TopicSubscriber',
                 'DirectPubSub':'com.solace.samples.javarto.features.DirectPubSub',
-                'MessageReplay':'com.solace.samples.javarto.features.QueueProvision',
+                'MessageReplay':'com.solace.samples.javarto.features.MessageReplay',
                 'SimpleFlowToTopic':'com.solace.samples.javarto.features.SimpleFlowToTopic',
                 'TopicToQueueMapping':'com.solace.samples.javarto.features.TopicToQueueMapping',
                 'Transactions':'com.solace.samples.javarto.features.Transactions',
