@@ -44,12 +44,20 @@ sourceSets {
     }
 }
 
-tasks.withType(JavaCompile).all {
-    options.compilerArgs.add("-Xlint:all")
-}
+//tasks.withType(JavaCompile).all {
+//    options.compilerArgs.add("-Xlint:all")
+//}
 
 def scripts = [ 'TopicPublisher':'com.solace.samples.javarto.patterns.TopicPublisher',
-                'TopicSubscriber':'com.solace.samples.javarto.patterns.TopicSubscriber'
+                'TopicSubscriber':'com.solace.samples.javarto.patterns.TopicSubscriber',
+                'DirectPubSub':'com.solace.samples.javarto.features.DirectPubSub',
+                'MessageReplay':'com.solace.samples.javarto.features.QueueProvision',
+                'SimpleFlowToTopic':'com.solace.samples.javarto.features.SimpleFlowToTopic',
+                'TopicToQueueMapping':'com.solace.samples.javarto.features.TopicToQueueMapping',
+                'Transactions':'com.solace.samples.javarto.features.Transactions',
+                'Replication':'com.solace.samples.javarto.features.Replication',
+                'SecureSession':'com.solace.samples.javarto.features.SecureSession',
+                'QueueProvision':'com.solace.samples.javarto.features.QueueProvision'
 ]
 scripts.each() { scriptName, className ->
     def t = tasks.create(name: scriptName+'StartScript', type: CreateStartScripts) {
