@@ -48,8 +48,8 @@ tasks.withType(JavaCompile).all {
     options.compilerArgs.add("-Xlint:all")
 }
 
-def scripts = [ 'TopicPublisher':'com.solace.samples.TopicPublisher',
-                'TopicSubscriber':'com.solace.samples.TopicSubscriber'
+def scripts = [ 'TopicPublisher':'com.solace.samples.javarto.patterns.TopicPublisher',
+                'TopicSubscriber':'com.solace.samples.javarto.patterns.TopicSubscriber'
 ]
 scripts.each() { scriptName, className ->
     def t = tasks.create(name: scriptName+'StartScript', type: CreateStartScripts) {
