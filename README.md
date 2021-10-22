@@ -12,11 +12,11 @@ The "Getting Started" tutorials will get you up to speed and sending messages wi
 
 ## Contents
 
-This repository contains code and matching tutorial walk-through for five different basic Solace messaging patterns. For a nice introduction to the Solace API and associated tutorials, check out the [tutorials home page](https://dev.solace.com/samples/solace-samples-javarto/).
+This repository contains code and matching tutorial walk-through for five different basic Solace messaging patterns. For a nice introduction to the Solace API and associated tutorials, check out the [tutorials home page](https://tutorials.solace.dev/javarto/).
 
 See the individual tutorials for details:
 
-- [Publish/Subscribe](https://dev.solace.com/samples/solace-samples-javarto/publish-subscribe): Learn how to set up pub/sub messaging on a Solace VMR.
+- [Publish/Subscribe](https://tutorials.solace.dev/javarto/publish-subscribe/): Learn how to set up pub/sub messaging on a Solace VMR.
 - TODO - Persistence: Learn how to set up persistence for guaranteed delivery.
 - TODO - Request/Reply: Learn how to set up request/reply messaging.
 - TODO - Confirmed Delivery: Learn how to confirm that your messages are received by a Solace message router.
@@ -31,7 +31,7 @@ To check out the project and build it, do the following:
 
 ### Download the Solace JavaRTO API
 
-This tutorial requires the Solace JavaRTO API library. Download the JavaRTO API library to your computer from [here](http://dev.solace.com/downloads/). The build instructions below assume you have unpacked the tar file into `solclientj` subdirectory of your GitHub repository.
+This tutorial requires the Solace JavaRTO API library. Download the JavaRTO API library to your computer from [here](http://solace.com/downloads/). The build instructions below assume you have unpacked the tar file into `solclientj` subdirectory of your GitHub repository.
 
 > NOTE: If you are running this tutorial on a Windows platform then rename the extracted `solclientj-<version>` directory to `solclientj`.
 
