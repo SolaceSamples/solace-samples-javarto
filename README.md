@@ -2,7 +2,7 @@
 
 ## Solace Messaging API for JavaRTO
 
-The Java Real-Time Optimized (RTO) messaging API (also referred to as solclientj) is a low-latency Java Native Interface (JNI) wrapper for the C API.
+The Java Real-Time Optimized (RTO) messaging API (also referred to as solclientj) is a low-latency Java Native Interface (JNI) wrapper for the C API. For "Pure Java" Solace APIs, please check out JCSMP and PubSub+ Java API.
 
 The "Getting Started" tutorials will get you up to speed and sending messages with Solace technology as quickly as possible. There are three ways you can get started:
 
