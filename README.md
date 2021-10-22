@@ -61,7 +61,7 @@ export DYLD_LIBRARY_PATH=`pwd`solclientj/lib:$DYLD_LIBRARY_PATH
 
 ```
 
-On **Windows 32-Bit**:
+On **Windows 32-Bit** Command Prompt:
 
 ```
 set PATH=%PATH%;solclientj\bin\Win32
@@ -69,7 +69,7 @@ build\staged\bin\TopicSubscriber.bat <<HOST_ADDRESS>>
 
 ```
 
-On **Windows 64-Bit**:
+On **Windows 64-Bit** Command Prompt:
 
 ```
 set PATH=%PATH%;solclientj\bin\Win64
@@ -108,10 +108,6 @@ To generate IDEA metadata (.iml and .ipr files), do the following:
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Authors
-
-See the list of [contributors](https://github.com/SolaceSamples/solace-samples-template/contributors) who participated in this project.
-
 ## License
 
 This project is licensed under the Apache License, Version 2.0. - See the [LICENSE](LICENSE) file for details.
@@ -121,7 +117,7 @@ This project is licensed under the Apache License, Version 2.0. - See the [LICEN
 For more information try these resources:
 
 - [Tutorials](https://tutorials.solace.dev/)
-- The Solace Developer Portal website at: http://dev.solace.com
+- The Solace Developer Portal website at: http://solace.dev
 - Get a better understanding of [Solace technology](https://solace.com/products/tech/).
-- Check out the [Solace blog](http://dev.solace.com/blog/) for other interesting discussions around Solace technology
+- Check out the [Solace blog](https://solace.com/blog/) for other interesting discussions around Solace technology
 - Ask the [Solace community.](https://solace.community)
