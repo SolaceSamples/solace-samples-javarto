@@ -4,10 +4,6 @@
  */
 package com.solace.samples.javarto.features;
 
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.util.logging.Level;
-
 import com.solacesystems.solclientj.core.SolEnum;
 import com.solacesystems.solclientj.core.Solclient;
 import com.solacesystems.solclientj.core.SolclientException;
@@ -16,8 +12,10 @@ import com.solacesystems.solclientj.core.handle.ContextHandle;
 import com.solacesystems.solclientj.core.handle.MessageHandle;
 import com.solacesystems.solclientj.core.handle.SessionHandle;
 import com.solacesystems.solclientj.core.resource.ClientName;
-import com.solacesystems.solclientj.core.resource.Destination;
 import com.solacesystems.solclientj.core.resource.Topic;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
+import java.util.logging.Level;
 
 /**
  * SubscribeOnBehalfOfClient.java
