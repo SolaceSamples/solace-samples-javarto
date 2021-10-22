@@ -2,7 +2,7 @@
 
 ## Solace Messaging API for JavaRTO
 
-The Java Real-Time Optimized (RTO) messaging API (also referred to as solclientj) is a low-latency Java Native Interface (JNI) wrapper for the C API.
+The Java Real-Time Optimized (RTO) messaging API (also referred to as solclientj) is a low-latency Java Native Interface (JNI) wrapper for the C API. For "pure Java" Solace APIs, please check out JCSMP or PubSub+ Java API instead.
 
 The "Getting Started" tutorials will get you up to speed and sending messages with Solace technology as quickly as possible. There are three ways you can get started:
 
@@ -12,11 +12,11 @@ The "Getting Started" tutorials will get you up to speed and sending messages wi
 
 ## Contents
 
-This repository contains code and matching tutorial walk-through for five different basic Solace messaging patterns. For a nice introduction to the Solace API and associated tutorials, check out the [tutorials home page](https://dev.solace.com/samples/solace-samples-javarto/).
+This repository contains code and matching tutorial walk-through for five different basic Solace messaging patterns. For a nice introduction to the Solace API and associated tutorials, check out the [tutorials home page](https://tutorials.solace.dev/javarto/).
 
 See the individual tutorials for details:
 
-- [Publish/Subscribe](https://dev.solace.com/samples/solace-samples-javarto/publish-subscribe): Learn how to set up pub/sub messaging on a Solace VMR.
+- [Publish/Subscribe](https://tutorials.solace.dev/javarto/publish-subscribe/): Learn how to set up pub/sub messaging on a Solace VMR.
 - TODO - Persistence: Learn how to set up persistence for guaranteed delivery.
 - TODO - Request/Reply: Learn how to set up request/reply messaging.
 - TODO - Confirmed Delivery: Learn how to confirm that your messages are received by a Solace message router.
@@ -31,7 +31,7 @@ To check out the project and build it, do the following:
 
 ### Download the Solace JavaRTO API
 
-This tutorial requires the Solace JavaRTO API library. Download the JavaRTO API library to your computer from [here](http://dev.solace.com/downloads/). The build instructions below assume you have unpacked the tar file into `solclientj` subdirectory of your GitHub repository.
+This tutorial requires the Solace JavaRTO API library. Download the JavaRTO API library to your computer from [here](http://solace.com/downloads/). The build instructions below assume you have unpacked the tar file into `solclientj` subdirectory of your GitHub repository.
 
 > NOTE: If you are running this tutorial on a Windows platform then rename the extracted `solclientj-<version>` directory to `solclientj`.
 
@@ -61,7 +61,7 @@ export DYLD_LIBRARY_PATH=`pwd`solclientj/lib:$DYLD_LIBRARY_PATH
 
 ```
 
-On **Windows 32-Bit**:
+On **Windows 32-Bit** Command Prompt:
 
 ```
 set PATH=%PATH%;solclientj\bin\Win32
@@ -69,7 +69,7 @@ build\staged\bin\TopicSubscriber.bat <<HOST_ADDRESS>>
 
 ```
 
-On **Windows 64-Bit**:
+On **Windows 64-Bit** Command Prompt:
 
 ```
 set PATH=%PATH%;solclientj\bin\Win64
@@ -108,10 +108,6 @@ To generate IDEA metadata (.iml and .ipr files), do the following:
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Authors
-
-See the list of [contributors](https://github.com/SolaceSamples/solace-samples-template/contributors) who participated in this project.
-
 ## License
 
 This project is licensed under the Apache License, Version 2.0. - See the [LICENSE](LICENSE) file for details.
@@ -121,7 +117,7 @@ This project is licensed under the Apache License, Version 2.0. - See the [LICEN
 For more information try these resources:
 
 - [Tutorials](https://tutorials.solace.dev/)
-- The Solace Developer Portal website at: http://dev.solace.com
+- The Solace Developer Portal website at: http://solace.dev
 - Get a better understanding of [Solace technology](https://solace.com/products/tech/).
-- Check out the [Solace blog](http://dev.solace.com/blog/) for other interesting discussions around Solace technology
+- Check out the [Solace blog](https://solace.com/blog/) for other interesting discussions around Solace technology
 - Ask the [Solace community.](https://solace.community)

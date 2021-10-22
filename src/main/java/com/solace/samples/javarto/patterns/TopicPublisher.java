@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.solace.samples;
+package com.solace.samples.javarto.patterns;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -42,33 +42,18 @@ public class TopicPublisher {
      * @param args
      */
     public static void main(String[] args) throws SolclientException {
-        // Check command line arguments
-        if (args.length != 3) {
-            System.out.println("Usage: TopicPublisher <host:port> <client-username@message-vpn> <client-password>");
-            System.out.println();
-            System.exit(-1);
-        }
-        String[] userSplit = args[1].split("@");
-        if (userSplit.length != 2) {
-            System.out.println("Usage: TopicPublisher <host:port> <client-username@message-vpn> <client-password>");
-            System.out.println();
-            System.exit(-1);
-        }
-        if (userSplit[0].isEmpty()) {
-            System.out.println("No client-username entered");
-            System.out.println();
-            System.exit(-1);
-        }
-        if (userSplit[1].isEmpty()) {
-            System.out.println("No message-vpn entered");
-            System.out.println();
+        if (args.length < 3) {  // Check command line arguments
+            System.out.println("Usage: TopicPublisher <host:port> <message-vpn> <client-username> [password]");
             System.exit(-1);
         }
 
         String host = args[0];
-        String username = userSplit[0];
-        String vpnName = userSplit[1];
-        String password = args[2];
+        String vpnName = args[1];
+        String username = args[2];
+        String password = null;
+        if (args.length > 3) {
+            password = args[3];
+        }
         System.out.println("TopicPublisher initializing...");
 
         // Initialize the API first
@@ -90,8 +75,10 @@ public class TopicPublisher {
         sessionProperties.add(host);
         sessionProperties.add(SessionHandle.PROPERTIES.USERNAME);
         sessionProperties.add(username);
-        sessionProperties.add(SessionHandle.PROPERTIES.PASSWORD);
-        sessionProperties.add(password);
+        if (password != null) {
+            sessionProperties.add(SessionHandle.PROPERTIES.PASSWORD);
+            sessionProperties.add(password);
+        }
         sessionProperties.add(SessionHandle.PROPERTIES.VPN_NAME);
         sessionProperties.add(vpnName);
         String[] props = new String[sessionProperties.size()];

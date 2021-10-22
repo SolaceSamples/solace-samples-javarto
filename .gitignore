@@ -4,7 +4,7 @@ hs_err_pid*
 _site
 .DS_Store
 docs/_site
-/.gradle/
+.gradle/
 bin/
 solclientj*
 .classpath
