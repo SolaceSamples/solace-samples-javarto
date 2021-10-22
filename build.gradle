@@ -28,7 +28,7 @@ jar {
 }
 
 repositories {
-    flatDir(dir: "${rootDir}/lib", name: 'Java RTO API lib directory')
+    flatDir(dir: "${rootDir}/solclientj/lib", name: 'Java RTO API lib directory')
 }
 
 dependencies {
