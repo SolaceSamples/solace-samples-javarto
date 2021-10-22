@@ -4,8 +4,6 @@
  */
 package com.solace.samples.javarto.features;
 
-import java.util.logging.Level;
-
 import com.solacesystems.solclientj.core.SolEnum;
 import com.solacesystems.solclientj.core.Solclient;
 import com.solacesystems.solclientj.core.SolclientException;
@@ -16,8 +14,8 @@ import com.solacesystems.solclientj.core.handle.FlowHandle;
 import com.solacesystems.solclientj.core.handle.MessageHandle;
 import com.solacesystems.solclientj.core.handle.SessionHandle;
 import com.solacesystems.solclientj.core.resource.Destination;
-import com.solacesystems.solclientj.core.resource.Endpoint;
 import com.solacesystems.solclientj.core.resource.Queue;
+import java.util.logging.Level;
 
 /**
  * 
@@ -49,7 +47,7 @@ public class MessageReplay extends AbstractSample {
 	protected void printUsage(boolean secureSession) {
 		String usage = ArgumentsParser.getCommonUsage(secureSession);
 		usage += "This sample:\n";
-		usage += "\t[-q queue]\t Guaranteed Message Queue.\n";
+		usage += "\t -q queue\t Guaranteed Message Queue.\n";
 		System.out.println(usage);
 		finish(1);
 	}
