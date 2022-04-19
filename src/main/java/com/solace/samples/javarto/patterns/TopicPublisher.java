@@ -125,16 +125,18 @@ public class TopicPublisher {
         // Create the content to publish and attach to message
         String contentStr = "Hello world!";
         ByteBuffer content = ByteBuffer.allocateDirect(contentStr.length());
-        content.put(contentStr.getBytes());
-        content.flip();
-        messageHandle.setBinaryAttachment(content);
-
-        // Send it
-        System.out.println(" Sending message with content: " + contentStr);
-        rc = sessionHandle.send(messageHandle);
-        assertReturnCode("sessionHandle.send()", rc, SolEnum.ReturnCode.OK, SolEnum.ReturnCode.IN_PROGRESS);
-
-        System.out.println(" Message Sent. Existing.");
+        
+        for (int i=0; i<100; i++) {
+        	content.clear();
+	        content.put(contentStr.getBytes());
+	        content.flip();
+	        messageHandle.setBinaryAttachment(content);
+	
+	        // Send it
+	        rc = sessionHandle.send(messageHandle);
+	        assertReturnCode("sessionHandle.send()", rc, SolEnum.ReturnCode.OK, SolEnum.ReturnCode.IN_PROGRESS);
+        }
+        System.out.println(" Messages sent. Exiting.");
 
         // Cleanup!
         // [Cleanup] -> free the allocated message
