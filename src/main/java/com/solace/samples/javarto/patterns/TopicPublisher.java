@@ -108,12 +108,12 @@ public class TopicPublisher {
         assertReturnCode("contextHandle.createSession()", rc, SolEnum.ReturnCode.OK);
 
         // [Session] -> finally connect the session
-        System.out.println(" Connecting session ...");
+        System.out.println("Connecting session ...");
         rc = sessionHandle.connect();
         assertReturnCode("sessionHandle.connect()", rc, SolEnum.ReturnCode.OK);
 
         // Create the Message to publish
-        System.out.println(" Creating message to publish ...");
+        System.out.println("Creating message to publish ...");
         final MessageHandle messageHandle = Solclient.Allocator.newMessageHandle();
         rc = Solclient.createMessageForHandle(messageHandle);
         assertReturnCode("Solclient.createMessage()", rc, SolEnum.ReturnCode.OK);
@@ -136,7 +136,7 @@ public class TopicPublisher {
 	        rc = sessionHandle.send(messageHandle);
 	        assertReturnCode("sessionHandle.send()", rc, SolEnum.ReturnCode.OK, SolEnum.ReturnCode.IN_PROGRESS);
         }
-        System.out.println(" Messages sent. Exiting.");
+        System.out.println("Messages sent. Exiting.");
 
         // Cleanup!
         // [Cleanup] -> free the allocated message
