@@ -18,9 +18,9 @@
  */
 package com.solace.samples.javarto.patterns;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
 
 import com.solacesystems.solclientj.core.SolEnum;
 import com.solacesystems.solclientj.core.Solclient;
@@ -57,7 +57,7 @@ import com.solacesystems.solclientj.core.resource.Topic;
  * @author Dishant Langayan
  */
 public class TopicSubscriber {
-    public static void main(String[] args) throws SolclientException {
+    public static void main(String[] args) throws SolclientException, IOException {
         if (args.length < 3) {  // Check command line arguments
             System.out.println("Usage: TopicSubscriber <host:port> <message-vpn> <client-username> [password]");
             System.exit(-1);
@@ -72,9 +72,6 @@ public class TopicSubscriber {
         }
         System.out.println("TopicSubscriber initializing...");
 
-        final CountDownLatch latch = new CountDownLatch(1); // used for
-                                                            // synchronizing b/w
-                                                            // threads
 
         // Initialize the API first
         System.out.println(" Initializing the Java RTO Messaging API...");
@@ -102,6 +99,10 @@ public class TopicSubscriber {
         sessionProperties.add(SessionHandle.PROPERTIES.VPN_NAME);
         sessionProperties.add(vpnName);
         String[] props = new String[sessionProperties.size()];
+        
+        // Get the binary attachment from the msg
+        ByteBuffer buffer = ByteBuffer.allocateDirect(100);  // assume no messages bigger than 1k
+        byte[] bufferArray = new byte[buffer.capacity()];
 
         // [Session] -> define a message callback to receive messages
         MessageCallback messageCallback = new MessageCallback() {
@@ -113,22 +114,19 @@ public class TopicSubscriber {
                     MessageHandle rxMessage = messageSupport.getRxMessage();
 
                     // Get the binary attachment from the msg
-                    ByteBuffer buffer = ByteBuffer.allocateDirect(rxMessage.getBinaryAttachmentSize());
+                    buffer.clear();
                     rxMessage.getBinaryAttachment(buffer);
                     buffer.flip();
-                    byte[] content = new byte[buffer.remaining()];
-                    buffer.get(content);
+                    buffer.get(bufferArray, 0, buffer.remaining());
 
-                    System.out.println("");
-                    System.out.println(" Received a message with content: " + new String(content));
-                    System.out.println(" Complete message dump: ");
+                    System.out.println("Received a message with content: " + new String(bufferArray));
 
                     // Display the contents of a message in human-readable form
-                    System.out.println(rxMessage.dump(SolEnum.MessageDumpMode.FULL));
+//                    System.out.println(" Complete message dump: ");
+//                    System.out.println(rxMessage.dump(SolEnum.MessageDumpMode.FULL));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                latch.countDown(); // unblock main thread
             }
 
         };
@@ -160,15 +158,15 @@ public class TopicSubscriber {
         rc = sessionHandle.subscribe(topic, SolEnum.SubscribeFlags.WAIT_FOR_CONFIRM, 0);
         assertReturnCode("sessionHandle.subscribe()", rc, SolEnum.ReturnCode.OK);
 
-        System.out.println(" Subscribed. Awaiting message...");
+        System.out.println("Connected, and running. Press [ENTER] to quit.");
         try {
-            latch.await(); // block here until message received, and latch will
-                           // flip
+            while (System.in.available() == 0) {
+                Thread.sleep(1000);  // wait 1 second
+            }
         } catch (InterruptedException e) {
-            System.out.println("I was awoken while waiting");
+            // Thread.sleep() interrupted... probably getting shut down
         }
-
-        System.out.println(" Existing.");
+        System.out.println("Exiting.");
 
         // Cleanup!
         // [Cleanup] -> disconnect session

@@ -108,12 +108,12 @@ public class TopicPublisher {
         assertReturnCode("contextHandle.createSession()", rc, SolEnum.ReturnCode.OK);
 
         // [Session] -> finally connect the session
-        System.out.println(" Connecting session ...");
+        System.out.println("Connecting session ...");
         rc = sessionHandle.connect();
         assertReturnCode("sessionHandle.connect()", rc, SolEnum.ReturnCode.OK);
 
         // Create the Message to publish
-        System.out.println(" Creating message to publish ...");
+        System.out.println("Creating message to publish ...");
         final MessageHandle messageHandle = Solclient.Allocator.newMessageHandle();
         rc = Solclient.createMessageForHandle(messageHandle);
         assertReturnCode("Solclient.createMessage()", rc, SolEnum.ReturnCode.OK);
@@ -125,16 +125,18 @@ public class TopicPublisher {
         // Create the content to publish and attach to message
         String contentStr = "Hello world!";
         ByteBuffer content = ByteBuffer.allocateDirect(contentStr.length());
-        content.put(contentStr.getBytes());
-        content.flip();
-        messageHandle.setBinaryAttachment(content);
-
-        // Send it
-        System.out.println(" Sending message with content: " + contentStr);
-        rc = sessionHandle.send(messageHandle);
-        assertReturnCode("sessionHandle.send()", rc, SolEnum.ReturnCode.OK, SolEnum.ReturnCode.IN_PROGRESS);
-
-        System.out.println(" Message Sent. Existing.");
+        
+        for (int i=0; i<100; i++) {
+        	content.clear();
+	        content.put(contentStr.getBytes());
+	        content.flip();
+	        messageHandle.setBinaryAttachment(content);
+	
+	        // Send it
+	        rc = sessionHandle.send(messageHandle);
+	        assertReturnCode("sessionHandle.send()", rc, SolEnum.ReturnCode.OK, SolEnum.ReturnCode.IN_PROGRESS);
+        }
+        System.out.println("Messages sent. Exiting.");
 
         // Cleanup!
         // [Cleanup] -> free the allocated message
