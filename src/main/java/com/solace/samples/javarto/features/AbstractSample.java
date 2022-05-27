@@ -316,9 +316,9 @@ public abstract class AbstractSample {
 						.getCommonNames());
 			}
 
-			if (secureSessionConfiguration.getProtocol() != null) {
-				sessionProperties.add(SessionHandle.PROPERTIES.SSL_PROTOCOL);
-				sessionProperties.add(secureSessionConfiguration.getProtocol());
+			if (secureSessionConfiguration.getExcludedProtocols() != null) {
+				sessionProperties.add(SessionHandle.PROPERTIES.SSL_EXCLUDED_PROTOCOLS);
+				sessionProperties.add(secureSessionConfiguration.getExcludedProtocols());
 			}
 			
 			if (secureSessionConfiguration.getSslDowngrade() != null) {

@@ -28,12 +28,14 @@ jar {
 }
 
 repositories {
-    flatDir(dir: "${rootDir}/solclientj/lib", name: 'Java RTO API lib directory')
+    maven {
+       url 'https://repo.maven.apache.org/maven2'
+    }
 }
 
 dependencies {
     // Solace Messaging API for JavaRTO Dependencies
-    implementation("com.solacesystems:solclientj:")
+    implementation("com.solacesystems:solclientj:10.0.0")
 }
 
 sourceSets {

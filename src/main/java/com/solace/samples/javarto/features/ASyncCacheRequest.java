@@ -176,13 +176,13 @@ public class ASyncCacheRequest extends AbstractSample {
 		 * status SolEnum.ReturnCode.IN_PROGRESS, and the cache request status
 		 * is returned through a callback when it completes.
 		 *
-		 * SolEnum.CacheRequest.NO_SUSBSCRIBE (sic): Unless this flag is set,
+		 * SolEnum.CacheRequest.NO_SUBSCRIBE: Unless this flag is set,
 		 * the SDK automatically subscribes to the topic. This flag overrides that default.
 		 */
 
 		long requestId = System.currentTimeMillis();
 		rc = cacheSessionHandle.sendCacheRequest(requestId, topic,
-				SolEnum.CacheRequest.NO_WAIT_REPLY | SolEnum.CacheRequest.NO_SUSBSCRIBE,
+				SolEnum.CacheRequest.NO_WAIT_REPLY | SolEnum.CacheRequest.NO_SUBSCRIBE,
 				SolEnum.CacheLiveDataAction.QUEUE, 0);
 		assertReturnCode("cacheSessionHandle.sendCacheRequest", rc,
 				SolEnum.ReturnCode.IN_PROGRESS);
