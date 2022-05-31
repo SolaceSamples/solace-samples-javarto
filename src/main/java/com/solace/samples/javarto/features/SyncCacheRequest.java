@@ -129,11 +129,11 @@ public class SyncCacheRequest extends AbstractSample {
 		assertReturnCode("sessionHandle.connect()", rc, SolEnum.ReturnCode.OK);
 
 		print("Will be using topic [" + topicName + "]");
-		Topic topic = Solclient.Allocator.newTopic(topicName);
 		ByteBuffer topicBuffer = ByteBuffer.allocateDirect(SolEnum.SolConstants.MAX_TOPIC_SIZE);
 		topicBuffer.clear();
 		topicBuffer.put(topicName.getBytes(StandardCharsets.UTF_8));
 		topicBuffer.flip();
+		Topic topic = Solclient.Allocator.newMutableTopic(topicBuffer);
 
 		/*************************************************************************
 		 * Publish a message (just to make sure there is one there cached)
@@ -188,9 +188,8 @@ public class SyncCacheRequest extends AbstractSample {
 		print("Sending cache request using GC free API.");
 
 		requestId = System.currentTimeMillis();
-		rc = cacheSessionHandle.sendCacheRequest(requestId, topicBuffer, 0,
+		rc = cacheSessionHandle.sendCacheRequest(requestId, topic, 0,
 				SolEnum.CacheLiveDataAction.QUEUE, 0);
-		topicBuffer.flip();
 		assertReturnCode("cacheSessionHandle.sendCacheRequest ", rc,
 				SolEnum.ReturnCode.OK);
 

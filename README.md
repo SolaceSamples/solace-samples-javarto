@@ -29,12 +29,6 @@ To check out the project and build it, do the following:
   1. clone this GitHub repository
   1. `cd solace-samples-javarto`
 
-### Download the Solace JavaRTO API
-
-This tutorial requires the Solace JavaRTO API library. Download the JavaRTO API library to your computer from [here](http://solace.com/downloads/). The build instructions below assume you have unpacked the tar file into `solclientj` subdirectory of your GitHub repository.
-
-> NOTE: If you are running this tutorial on a Windows platform then rename the extracted `solclientj-<version>` directory to `solclientj`.
-
 ## Build the Samples
 
 To build the samples:
@@ -48,32 +42,21 @@ To try individual samples, build the project from source and then run samples li
 On **Linux**:
 
 ```
-export LD_LIBRARY_PATH=`pwd`/solclientj/lib:$LD_LIBRARY_PATH 
-./build/staged/bin/TopicSubscriber <<HOST_ADDRESS>>
+./build/staged/bin/TopicSubscriber <<HOST_ADDRESS>> <<VPN> <<client-username>>
 
 ```
 
 On **MacOS & Darwin**:
 
 ```
-export DYLD_LIBRARY_PATH=`pwd`solclientj/lib:$DYLD_LIBRARY_PATH 
-./build/staged/bin/TopicSubscriber <<HOST_ADDRESS>>
+./build/staged/bin/TopicSubscriber <<HOST_ADDRESS>> <<VPN> <<client-username>>
 
 ```
 
-On **Windows 32-Bit** Command Prompt:
+On **Windows** Command Prompt:
 
 ```
-set PATH=%PATH%;solclientj\bin\Win32
-build\staged\bin\TopicSubscriber.bat <<HOST_ADDRESS>>
-
-```
-
-On **Windows 64-Bit** Command Prompt:
-
-```
-set PATH=%PATH%;solclientj\bin\Win64
-build\staged\bin\TopicSubscriber.bat <<HOST_ADDRESS>>
+build\staged\bin\TopicSubscriber.bat <<HOST_ADDRESS>> <<VPN> <<client-username>>
 
 ```
 

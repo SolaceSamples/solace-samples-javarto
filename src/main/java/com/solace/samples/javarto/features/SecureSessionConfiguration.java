@@ -6,7 +6,6 @@ package com.solace.samples.javarto.features;
 
 public class SecureSessionConfiguration extends SessionConfiguration {
 
-	private String protocol;
 	private String excludedProtocols;
 	private String ciphers;
 	private String trustStoreDir;
@@ -21,8 +20,8 @@ public class SecureSessionConfiguration extends SessionConfiguration {
 	@Override
 	public String toString() {
 		StringBuilder bldr = new StringBuilder(super.toString());
-		bldr.append(", protocol=");
-		bldr.append(protocol);
+		bldr.append(", excludedProtocols=");
+		bldr.append(excludedProtocols);
 		bldr.append(", ciphers=");
 		bldr.append(ciphers);
 		bldr.append(", trustStoreDir=");
@@ -41,23 +40,10 @@ public class SecureSessionConfiguration extends SessionConfiguration {
 	}
 
 	/**
-	 * @return the protocol
-	 */
-	public String getProtocol() {
-		return protocol;
-	}
-	/**
 	 * @return the excludeProtocols
 	 */
 	public String getExcludedProtocols() {
 		return excludedProtocols;
-	}
-	/**
-	 * @param protocol
-	 *            the protocol to set
-	 */
-	public void setProtocol(String protocol) {
-		this.protocol = protocol;
 	}
 	/**
 	 * @param excludedProtocols
