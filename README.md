@@ -26,15 +26,13 @@ See the individual tutorials for details:
 
 To check out the project and build it, do the following:
 
-  1. clone this GitHub repository
+  1. `git clone` this GitHub repository
   1. `cd solace-samples-javarto`
 
 ## Build the Samples
-
-To build the samples:
-
-  1. `./gradlew assemble`
-  
+```
+./gradlew clean assemble
+```  
 ## Running the Samples
 
 To try individual samples, build the project from source and then run samples like the following:
@@ -60,13 +58,11 @@ build\staged\bin\TopicSubscriber.bat <<HOST_ADDRESS>> <<VPN> <<client-username>>
 
 ```
 
-## Exploring the Samples
-
 ### Setting up your preferred IDE
 
 Using a modern Java IDE provides cool productivity features like auto-completion, on-the-fly compilation, assisted re-factoring and debugging which can be useful when you're exploring the samples and even modifying the samples. Follow the steps below for your preferred IDE.
 
-#### Using Eclipse
+### Using Eclipse
 
 To generate Eclipse metadata (.classpath and .project files), do the following:
 
@@ -81,7 +77,7 @@ free of errors.
 
 > If your Eclipse has the Gradle plugin already installed, the instead of generating the Eclipse metadata files as above, simply import this tutorial as a Gradle project: *File -> Import -> Gradle -> Gradle Project*
 
-#### Using IntelliJ IDEA
+### Using IntelliJ IDEA
 
 To generate IDEA metadata (.iml and .ipr files), do the following:
 
