@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
     // Solace Messaging API for JavaRTO Dependencies
-    implementation("com.solacesystems:solclientj:10.4.1")
+    implementation("com.solacesystems:solclientj:10.5.0")
 }
 
 sourceSets {
@@ -61,7 +61,7 @@ def scripts = [ 'TopicPublisher':'com.solace.samples.javarto.patterns.TopicPubli
 ]
 scripts.each() { scriptName, className ->
     def t = tasks.create(name: scriptName+'StartScript', type: CreateStartScripts) {
-        mainClassName = className
+        mainClass = className
         applicationName = scriptName
         outputDir = new File(project.buildDir, 'scripts')
         classpath = jar.outputs.files + project.configurations.runtimeClasspath
