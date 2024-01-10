@@ -2,6 +2,7 @@ package com.solace.samples.javarto.howtos;
 
 import com.solace.samples.javarto.features.common.AbstractSample;
 import com.solacesystems.solclientj.core.SolEnum;
+import com.solacesystems.solclientj.core.SolEnum.MessageOutcome;
 import com.solacesystems.solclientj.core.Solclient;
 import com.solacesystems.solclientj.core.handle.FlowHandle;
 import com.solacesystems.solclientj.core.handle.Handle;
@@ -40,7 +41,7 @@ public class HowToUseSettle {
         /* NOTE: MessageOutcome.ACCEPTED is always supported, so no need to add flow property */
 
         sessionHandle.createFlowForHandle(flowHandle, flowProps, queueToConsumeFrom, null,
-                new AbstractSample.MessageCallbackSample() {
+                new AbstractSample.MessageCallbackSample("") {
                     @Override
                     public void onMessage(Handle handle) {
                         FlowHandle flowHandle = (FlowHandle) handle;
@@ -83,7 +84,7 @@ public class HowToUseSettle {
         flowProps[propsIndex++] = SolEnum.BooleanValue.ENABLE;
 
         sessionHandle.createFlowForHandle(flowHandle, flowProps, queueToConsumeFrom, null,
-                new AbstractSample.MessageCallbackSample() {
+                new AbstractSample.MessageCallbackSample("") {
                     @Override
                     public void onMessage(Handle handle) {
                         FlowHandle flowHandle = (FlowHandle) handle;
@@ -126,7 +127,7 @@ public class HowToUseSettle {
         flowProps[propsIndex++] = SolEnum.BooleanValue.ENABLE;
 
         sessionHandle.createFlowForHandle(flowHandle, flowProps, queueToConsumeFrom, null,
-                new AbstractSample.MessageCallbackSample() {
+                new AbstractSample.MessageCallbackSample("") {
                     @Override
                     public void onMessage(Handle handle) {
                         FlowHandle flowHandle = (FlowHandle) handle;
