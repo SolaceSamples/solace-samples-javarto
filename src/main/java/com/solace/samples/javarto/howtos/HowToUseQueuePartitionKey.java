@@ -39,7 +39,7 @@ public class HowToUseQueuePartitionKey {
     /* This method demonstrates how to set/overwrite the queue partition key on a message
      * that already has a queue partition key set.
      */
-    public void howToApplyQueuePartitionKey(MessageHandle messageHandle, String queuePartitionKey) throws SolclientException {
+    public void howToOverwriteQueuePartitionKey(MessageHandle messageHandle, String queuePartitionKey) throws SolclientException {
         assertNotNull(String.format("Expected to be passed a MessageHandle with a queue partition key, but instead "
                 + "the queue partition key was null"),
             messageHandle.getQueuePartitionKey());
