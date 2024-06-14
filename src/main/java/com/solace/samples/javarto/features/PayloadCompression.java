@@ -48,31 +48,31 @@ import com.solacesystems.solclientj.core.resource.Topic;
  */
 public class PayloadCompression extends AbstractSample {
 
-	private boolean keepRxMsgs = false;
-	private SessionHandle sessionHandle = Solclient.Allocator
-			.newSessionHandle();
-	private ContextHandle contextHandle = Solclient.Allocator
-			.newContextHandle();
-	private MessageHandle messageHandle = Solclient.Allocator
-			.newMessageHandle();
-	private Topic topic = Solclient.Allocator
-			.newTopic(SampleUtils.SAMPLE_TOPIC);
+    private boolean keepRxMsgs = false;
+    private SessionHandle sessionHandle = Solclient.Allocator
+            .newSessionHandle();
+    private ContextHandle contextHandle = Solclient.Allocator
+            .newContextHandle();
+    private MessageHandle messageHandle = Solclient.Allocator
+            .newMessageHandle();
+    private Topic topic = Solclient.Allocator
+            .newTopic(SampleUtils.SAMPLE_TOPIC);
 
-	private ByteBuffer content = ByteBuffer.allocateDirect(50000);
+    private ByteBuffer content = ByteBuffer.allocateDirect(50000);
 
-	MessageCallbackSample messageCallback;
+    MessageCallbackSample messageCallback;
 
-	@Override
-	protected void printUsage(boolean secureSession) {
-		String usage = ArgumentsParser.getCommonUsage(secureSession);
-		System.out.println(usage);
-	}
+    @Override
+    protected void printUsage(boolean secureSession) {
+        String usage = ArgumentsParser.getCommonUsage(secureSession);
+        System.out.println(usage);
+    }
 
-	/**
-	 * This is the main method of the sample
-	 */
-	@Override
-	protected void run(String[] args, SessionConfiguration config, Level logLevel) throws SolclientException {
+    /**
+     * This is the main method of the sample
+     */
+    @Override
+    protected void run(String[] args, SessionConfiguration config, Level logLevel) throws SolclientException {
 
         // Init
         print(" Initializing the Java RTO Messaging API...");
@@ -149,42 +149,42 @@ public class PayloadCompression extends AbstractSample {
 
     }
 
-	/**
-	 * Invoked when the sample finishes
-	 */
-	@Override
-	protected void finish(int status) {
+    /**
+     * Invoked when the sample finishes
+     */
+    @Override
+    protected void finish(int status) {
 
-		/*************************************************************************
-		 * Cleanup
-		 *************************************************************************/
+        /*************************************************************************
+         * Cleanup
+         *************************************************************************/
 
-		if (messageCallback != null) {
-			try {
-				messageCallback.destroy();
-			} catch (Throwable t) {
-				error("Unable to call destroy on messageCallback ", t);
-			}
-		}
+        if (messageCallback != null) {
+            try {
+                messageCallback.destroy();
+            } catch (Throwable t) {
+                error("Unable to call destroy on messageCallback ", t);
+            }
+        }
 
-		finish_DestroyHandle(messageHandle, "messageHandle");
+        finish_DestroyHandle(messageHandle, "messageHandle");
 
-		finish_Disconnect(sessionHandle);
+        finish_Disconnect(sessionHandle);
 
-		finish_DestroyHandle(sessionHandle, "sessionHandle");
+        finish_DestroyHandle(sessionHandle, "sessionHandle");
 
-		finish_DestroyHandle(contextHandle, "contextHandle");
+        finish_DestroyHandle(contextHandle, "contextHandle");
 
-		finish_Solclient();
-	}
+        finish_Solclient();
+    }
 
 /**
      * Boilerplate, calls {@link #run(String[])
      * @param args
      */
-	public static void main(String[] args) {
-		PayloadCompression sample = new PayloadCompression();
-		sample.run(args);
-	}
+    public static void main(String[] args) {
+        PayloadCompression sample = new PayloadCompression();
+        sample.run(args);
+    }
 
 }
