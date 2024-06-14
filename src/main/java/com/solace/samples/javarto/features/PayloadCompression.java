@@ -72,52 +72,51 @@ public class PayloadCompression extends AbstractSample {
 	 * This is the main method of the sample
 	 */
 	@Override
-	protected void run(String[] args, SessionConfiguration config, Level logLevel)
-			throws SolclientException {
+	protected void run(String[] args, SessionConfiguration config, Level logLevel) throws SolclientException {
 
-		// Init
-		print(" Initializing the Java RTO Messaging API...");
-		int rc = Solclient.init(new String[0]);
-		assertReturnCode("Solclient.init()", rc, SolEnum.ReturnCode.OK);
+        // Init
+        print(" Initializing the Java RTO Messaging API...");
+        int rc = Solclient.init(new String[0]);
+        assertReturnCode("Solclient.init()", rc, SolEnum.ReturnCode.OK);
 
-		// Set a log level (not necessary as there is a default)
-		Solclient.setLogLevel(logLevel);
-		
-		// Context
-		print(" Creating a context ...");
-		rc = Solclient.createContextForHandle(contextHandle, new String[0]);
-		assertReturnCode("Solclient.createContext()", rc, SolEnum.ReturnCode.OK);
+        // Set a log level (not necessary as there is a default)
+        Solclient.setLogLevel(logLevel);
 
-		// Session
-		print(" Creating a session ...");
-		String[] sessionProps = getSessionProps(config, 2);
+        // Context
+        print(" Creating a context ...");
+        rc = Solclient.createContextForHandle(contextHandle, new String[0]);
+        assertReturnCode("Solclient.createContext()", rc, SolEnum.ReturnCode.OK);
+
+        // Session
+        print(" Creating a session ...");
+        String[] sessionProps = getSessionProps(config, 2);
 
         // Setting the compression level
         sessionProps[sessionProps.length - 2] = SessionHandle.PROPERTIES.PAYLOAD_COMPRESSION_LEVEL;
-		sessionProps[sessionProps.length - 1] = "9";
+        sessionProps[sessionProps.length - 1] = "9";
 
-		messageCallback = getMessageCallback(keepRxMsgs);
-		SessionEventCallback sessionEventCallback = getDefaultSessionEventCallback();
-		rc = contextHandle.createSessionForHandle(sessionHandle, sessionProps,
-				messageCallback, sessionEventCallback);
-		assertReturnCode("contextHandle.createSession()", rc,
-				SolEnum.ReturnCode.OK);
+        messageCallback = getMessageCallback(keepRxMsgs);
+        SessionEventCallback sessionEventCallback = getDefaultSessionEventCallback();
+        rc = contextHandle.createSessionForHandle(sessionHandle, sessionProps,
+                messageCallback, sessionEventCallback);
+        assertReturnCode("contextHandle.createSession()", rc,
+                SolEnum.ReturnCode.OK);
 
-		// Connect
-		print(" Connecting session ...");
-		rc = sessionHandle.connect();
-		assertReturnCode("sessionHandle.connect()", rc, SolEnum.ReturnCode.OK);
+        // Connect
+        print(" Connecting session ...");
+        rc = sessionHandle.connect();
+        assertReturnCode("sessionHandle.connect()", rc, SolEnum.ReturnCode.OK);
 
-		// Subscribe
-		print(" Adding subscription ...");
-		rc = sessionHandle.subscribe(topic,
-				SolEnum.SubscribeFlags.WAIT_FOR_CONFIRM, 0);
-		assertReturnCode("sessionHandle.subscribe()", rc, SolEnum.ReturnCode.OK);
+        // Subscribe
+        print(" Adding subscription ...");
+        rc = sessionHandle.subscribe(topic,
+                SolEnum.SubscribeFlags.WAIT_FOR_CONFIRM, 0);
+        assertReturnCode("sessionHandle.subscribe()", rc, SolEnum.ReturnCode.OK);
 
-		// Allocate the message
-		rc = Solclient.createMessageForHandle(messageHandle);
-		assertReturnCode("Solclient.createMessage()", rc, SolEnum.ReturnCode.OK);
-		messageHandle.setDestination(topic);
+        // Allocate the message
+        rc = Solclient.createMessageForHandle(messageHandle);
+        assertReturnCode("Solclient.createMessage()", rc, SolEnum.ReturnCode.OK);
+        messageHandle.setDestination(topic);
 
         // Set content and destination on the message
         messageHandle.setBinaryAttachment(content);
@@ -137,13 +136,13 @@ public class PayloadCompression extends AbstractSample {
         long[] rxStats = new long[SolEnum.StatRx.getEnumCount()];
         long[] txStats = new long[SolEnum.StatTx.getEnumCount()];
 
-		// Get the updated stats
+        // Get the updated stats
         sessionHandle.getTxStats(txStats);
         sessionHandle.getRxStats(rxStats);
-        
+
         long totalBytesSent = txStats[SolEnum.StatTx.TOTAL_DATA_BYTES];
         long totalBytesReceived = rxStats[SolEnum.StatRx.TOTAL_DATA_BYTES];
-        
+
         System.out.println("Original Message size: " + content.capacity());
         System.out.println("Total Bytes got sent: " + totalBytesSent);
         System.out.println("Total Bytes got received: " + totalBytesReceived);
