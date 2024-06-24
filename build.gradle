@@ -57,7 +57,8 @@ def scripts = [ 'TopicPublisher':'com.solace.samples.javarto.patterns.TopicPubli
                 'Transactions':'com.solace.samples.javarto.features.Transactions',
                 'Replication':'com.solace.samples.javarto.features.Replication',
                 'SecureSession':'com.solace.samples.javarto.features.SecureSession',
-                'QueueProvision':'com.solace.samples.javarto.features.QueueProvision'
+                'QueueProvision':'com.solace.samples.javarto.features.QueueProvision',
+                'PayloadCompression':'com.solace.samples.javarto.features.PayloadCompression'
 ]
 scripts.each() { scriptName, className ->
     def t = tasks.create(name: scriptName+'StartScript', type: CreateStartScripts) {
