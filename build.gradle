@@ -33,7 +33,7 @@ repositories {
 
 dependencies {
     // Solace Messaging API for JavaRTO Dependencies
-    implementation("com.solacesystems:solclientj:10.5.0")
+    implementation("com.solacesystems:solclientj:10.8.0")
 }
 
 sourceSets {
