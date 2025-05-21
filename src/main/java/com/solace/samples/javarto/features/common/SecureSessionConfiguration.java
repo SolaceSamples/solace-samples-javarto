@@ -11,8 +11,8 @@ public class SecureSessionConfiguration extends SessionConfiguration {
 	private String ciphers;
 	private String trustStoreDir;
 	private String commonNames;
-	private boolean validateCertificates = false;
-	private boolean validateCertificateDates = false;
+	private boolean validateCertificates = true;
+	private boolean validateCertificateDates = true;
 	private String sslDowngrade;
 	private String privateKeyFile;
 	private String privateKeyPassword;
